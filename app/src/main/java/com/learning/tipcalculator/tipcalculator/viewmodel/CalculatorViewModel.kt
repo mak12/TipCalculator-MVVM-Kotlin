@@ -13,27 +13,31 @@ import com.learning.tipcalculator.tipcalculator.model.TipCalculation
 class CalculatorViewModel @JvmOverloads constructor(
         app:Application ,val calculator : RestaurantCalculator = RestaurantCalculator()) : ObservableViewModel(app) {
 
+    private var lastTipCalculated = TipCalculation()
 
-//    var inputCheckAmount= ObservableField<String>("")
-//
-//    var inputTipPercentage= ObservableField<String>("")
     var inputCheckAmount=""
     var inputTipPercentage= ""
 
-    var outputCheckAmount = ""
-    var outputTipAmount = ""
-    var outputTotalDollarAmount = ""
+    val outputCheckAmount get() = getApplication<Application>().getString(R.string.dollar_amount,lastTipCalculated.checkAmount)
+    val outputTipAmount get()= getApplication<Application>().getString(R.string.dollar_amount,lastTipCalculated.tipAmount)
+    val outputTotalDollarAmount get()= getApplication<Application>().getString(R.string.dollar_amount,lastTipCalculated.grandTotal)
+    val locationName get() = lastTipCalculated.locationName
 
     init {
         updateOutputs(TipCalculation())
     }
 
     private fun updateOutputs(tc : TipCalculation){
-        outputCheckAmount = getApplication<Application>().getString(R.string.dollar_amount,tc.checkAmount)
-        outputTipAmount = getApplication<Application>().getString(R.string.dollar_amount,tc.tipAmount)
-        outputTotalDollarAmount = getApplication<Application>().getString(R.string.dollar_amount,tc.grandTotal)
+        lastTipCalculated = tc
+        notifyChange()
     }
 
+    fun saveCurrentTip(name : String){
+        val tipToSave = lastTipCalculated.copy(locationName = name)
+        calculator.saveTipCalculation(tipToSave)
+
+        updateOutputs(tipToSave)
+    }
 //    fun calculateTip(){
 //
 //        Log.d(TAG, "calculateTipInvoked")
@@ -50,24 +54,21 @@ class CalculatorViewModel @JvmOverloads constructor(
 
     fun calculateTip(){
 
-
-
         val checkAmount = inputCheckAmount.toDoubleOrNull()
         val tipPct = inputTipPercentage.toIntOrNull()
 
         if (checkAmount!=null && tipPct!=null) {
             Log.d(TAG , "CheckAmount:$checkAmount, TipPct:$tipPct")
             updateOutputs(calculator.calculateTip(checkAmount, tipPct))
-            clearInputs()
         }
     }
 
-    fun clearInputs(){
-//        inputCheckAmount.set("0.00")
-//        inputTipPercentage.set("0")
-        inputCheckAmount="0.00"
-        inputTipPercentage="0"
-        notifyChange()
-    }
+//    fun clearInputs(){
+////        inputCheckAmount.set("0.00")
+////        inputTipPercentage.set("0")
+//        inputCheckAmount="0.00"
+//        inputTipPercentage="0"
+//        notifyChange()
+//    }
 }
 private const val TAG = "CalculatorViewModel"

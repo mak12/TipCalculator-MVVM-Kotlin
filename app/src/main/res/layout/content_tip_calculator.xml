@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -66,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:paddingTop="16dp"
+            android:baselineAligned="false"
             android:orientation="horizontal"
             android:paddingBottom="32dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
                     style="@style/TextAppearance.AppCompat.Large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={vm.outputCheckAmount}"
+                    android:text="@{vm.outputCheckAmount}"
                     android:textAlignment="center" />
 
                 <TextView
@@ -106,7 +106,7 @@
                     style="@style/TextAppearance.AppCompat.Large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={vm.outputTipAmount}"
+                    android:text="@{vm.outputTipAmount}"
                     android:textAlignment="center" />
 
                 <TextView
@@ -129,7 +129,7 @@
                     style="@style/TextAppearance.AppCompat.Large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@={vm.outputTotalDollarAmount}"
+                    android:text="@{vm.outputTotalDollarAmount}"
                     android:textAlignment="center" />
 
                 <TextView
@@ -141,5 +141,19 @@
                     android:textAlignment="center" />
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/calculation_name"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calculation_outputs"
+            android:textAlignment="center"
+            android:text="@{vm.locationName}"
+            tools:text="Veggie Piece" />
     </android.support.constraint.ConstraintLayout>
 </layout>
