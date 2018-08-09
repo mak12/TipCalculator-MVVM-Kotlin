@@ -14,20 +14,18 @@ import com.learning.tipcalculator.tipcalculator.databinding.ActivityTipCalculato
 import com.learning.tipcalculator.tipcalculator.eventhandlers.TipsEventsHandlers
 import com.learning.tipcalculator.tipcalculator.viewmodel.CalculatorViewModel
 
-class TipCalculatorActivity : AppCompatActivity() , TipsEventsHandlers{
+class TipCalculatorActivity : AppCompatActivity(){
 
     lateinit var mBinding: ActivityTipCalculatorBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG , "onCreate")
-        //mViewModel= ViewModelProviders.of(this)[CalculatorViewModel::class.java]
+
         mBinding=DataBindingUtil.setContentView(this,R.layout.activity_tip_calculator)
-        mBinding.vm = CalculatorViewModel(application)
+        //mBinding.vm = CalculatorViewModel(application)
+        mBinding.vm = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
 
         setSupportActionBar(mBinding.toolbar)
-    }
-
-    override fun calculateTip() {
     }
 
     override fun onDestroy() {
