@@ -12,5 +12,6 @@
     
     <string name="save_hint">Enter Location</string>
     <string name="action_save">Save</string>
+    <string name="action_load">Load</string>
     <string name="action_cancel">Cancel</string>
 </resources>

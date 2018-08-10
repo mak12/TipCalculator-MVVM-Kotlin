@@ -16,13 +16,17 @@ import com.learning.tipcalculator.tipcalculator.databinding.ActivityTipCalculato
 import com.learning.tipcalculator.tipcalculator.eventhandlers.TipsEventsHandlers
 import com.learning.tipcalculator.tipcalculator.viewmodel.CalculatorViewModel
 
-class TipCalculatorActivity : AppCompatActivity(), SaveDialogFragment.CallBack{
+class TipCalculatorActivity : AppCompatActivity(), SaveDialogFragment.CallBack, LoadDialogFragment.CallBack{
 
     lateinit var mBinding: ActivityTipCalculatorBinding
 
     override fun onSaveTip(name: String) {
         mBinding.vm?.saveCurrentTip(name)
         Snackbar.make(mBinding.root,"Saved $name", Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onTipSelected(name: String) {
+        Snackbar.make(mBinding.root ,"Name $name", Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,6 +40,10 @@ class TipCalculatorActivity : AppCompatActivity(), SaveDialogFragment.CallBack{
                 showSaveDialog()
                 true
             }
+            R.id.action_load ->{
+                showLoadDialog()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -43,6 +51,11 @@ class TipCalculatorActivity : AppCompatActivity(), SaveDialogFragment.CallBack{
     private fun showSaveDialog(){
         val saveDialogFragment = SaveDialogFragment()
         saveDialogFragment.show(supportFragmentManager, "SaveDialog")
+    }
+
+    private fun showLoadDialog(){
+        val showLoadDialogFragment = LoadDialogFragment()
+        showLoadDialogFragment.show(supportFragmentManager ,"LoadDialog")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
