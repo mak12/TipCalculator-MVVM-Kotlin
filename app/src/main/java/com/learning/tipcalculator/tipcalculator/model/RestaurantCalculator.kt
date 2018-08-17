@@ -3,7 +3,11 @@ package com.learning.tipcalculator.tipcalculator.model
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import java.math.RoundingMode
-
+/**
+ * @author Mak
+ *         <p>Created on 8/16/2018.</p>
+ *        <p>Helper class for various operations reacted tips</p>
+ */
 class RestaurantCalculator(val repository: TipCalculationRepository = TipCalculationRepository()) {
     fun calculateTip(checkInput: Double, tipPctInput: Int): TipCalculation {
 

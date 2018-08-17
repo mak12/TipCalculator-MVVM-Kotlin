@@ -8,6 +8,10 @@ import org.junit.Test
 import org.junit.rules.TestRule
 import java.time.Instant
 
+/**
+ * @author Mak
+ *         <p>Created on 8/14/2018.</p>
+ */
 class TipCalculationRepositoryTest {
 
     @get:Rule

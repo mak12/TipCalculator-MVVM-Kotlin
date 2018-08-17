@@ -5,6 +5,10 @@ import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * @author Mak
+ *         <p>Created on 8/14/2018.</p>
+ */
 class RestaurantCalculatorTest {
 
     lateinit var calculator :  RestaurantCalculator

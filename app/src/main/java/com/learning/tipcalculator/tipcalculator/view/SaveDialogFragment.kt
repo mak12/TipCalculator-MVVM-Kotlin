@@ -9,7 +9,11 @@ import android.view.View
 import android.widget.EditText
 import com.learning.tipcalculator.tipcalculator.R
 
-
+/**
+ * @author Mak
+ *         <p>Created on 8/13/2018.</p>
+ *        <p>Save Dialog for saving tip</p>
+ */
 class SaveDialogFragment : DialogFragment() {
 
     interface CallBack{

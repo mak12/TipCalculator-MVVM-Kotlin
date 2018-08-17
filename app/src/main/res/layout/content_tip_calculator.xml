@@ -34,6 +34,8 @@
                 android:layout_height="wrap_content"
                 android:text="@={vm.inputCheckAmount}"
                 android:hint="@string/input_check_amount_hint"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
                 android:inputType="numberDecimal"
                 android:selectAllOnFocus="true" />
 
@@ -55,6 +57,8 @@
                 android:text="@={vm.inputTipPercentage}"
                 android:hint="@string/input_tip_percentage_hint"
                 android:inputType="number"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
                 android:selectAllOnFocus="true" />
 
         </android.support.design.widget.TextInputLayout>
@@ -154,6 +158,6 @@
             app:layout_constraintTop_toBottomOf="@id/calculation_outputs"
             android:textAlignment="center"
             android:text="@{vm.locationName}"
-            tools:text="Veggie Piece" />
+            tools:text="Veggie Palace" />
     </android.support.constraint.ConstraintLayout>
 </layout>

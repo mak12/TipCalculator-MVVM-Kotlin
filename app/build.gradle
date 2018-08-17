@@ -39,13 +39,14 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$constraintLayutVersion"
     implementation "com.android.support:design:$supportVersion"
     implementation "android.arch.lifecycle:extensions:$arch_comp"
-
+    implementation "com.android.support:support-v4:$supportVersion"
     kapt "com.android.databinding:compiler:$android_plugin"
     //Test
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:$mockito"
     testImplementation "android.arch.core:core-testing:$arch_comp"
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation "com.android.support.test:rules:$android_junit_runner"
+    androidTestImplementation "com.android.support.test:runner:$android_junit_runner"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso"
 }

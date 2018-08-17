@@ -15,7 +15,10 @@ import com.learning.tipcalculator.tipcalculator.R
 import com.learning.tipcalculator.tipcalculator.databinding.ActivityTipCalculatorBinding
 import com.learning.tipcalculator.tipcalculator.eventhandlers.TipsEventsHandlers
 import com.learning.tipcalculator.tipcalculator.viewmodel.CalculatorViewModel
-
+/**
+ * @author Mak
+ *         <p>Created on 8/11/2018.</p>
+ */
 class TipCalculatorActivity : AppCompatActivity(), SaveDialogFragment.CallBack, LoadDialogFragment.CallBack{
 
     lateinit var mBinding: ActivityTipCalculatorBinding
@@ -26,6 +29,7 @@ class TipCalculatorActivity : AppCompatActivity(), SaveDialogFragment.CallBack, 
     }
 
     override fun onTipSelected(name: String) {
+        mBinding.vm?.loadTipCalculation(name)
         Snackbar.make(mBinding.root ,"Name $name", Snackbar.LENGTH_SHORT).show()
     }
 

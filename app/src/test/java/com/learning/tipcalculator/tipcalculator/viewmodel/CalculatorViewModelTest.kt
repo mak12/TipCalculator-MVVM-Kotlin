@@ -12,6 +12,10 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 
+/**
+ * @author Mak
+ *         <p>Created on 8/13/2018.</p>
+ */
 class CalculatorViewModelTest {
 
     lateinit var calculatorViewModel: CalculatorViewModel

@@ -2,7 +2,11 @@ package com.learning.tipcalculator.tipcalculator.model
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-
+/**
+ * @author Mak
+ *        <p>Created on 8/16/2018.</p>
+ *        <p>Repo for tip calculation</p>
+ */
 class TipCalculationRepository {
 
     private val savedTips = mutableMapOf<String, TipCalculation>()
